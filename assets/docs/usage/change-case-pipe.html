@@ -1,0 +1,40 @@
+<h5 id="overview">Overview</h5>
+<p>The <code>changeCase</code> pipe is used to transform the letter casing of the input string to the specified casing.</p>
+<p>This pipe is a thin wrapper for the <code>change-case</code> NPM package:
+<a href="https://www.npmjs.com/package/change-case">https://www.npmjs.com/package/change-case</a></p>
+<p> </p>
+<h5 id="api">API</h5>
+<pre><code class="language-ts">transform(value: string, caseFunction: string): string
+</code></pre>
+<p><code>value</code>: the <code>string</code> value to transform</p>
+<p><code>caseFunction</code>: which function (from the <code>change-case</code> package) to call to transform the text</p>
+<p> </p>
+<h5 id="installing-the-pipe">Installing the Pipe</h5>
+<p>As the pipe has a dependency on the <code>change-case</code> package, it is not included in the main Cashmere NPM package. To
+install this pipe, use the following NPM command:</p>
+<pre><code>npm i @bit/healthcatalyst.cashmere.change-case-pipe
+</code></pre>
+<p>Note that you will need to configure the <code>@bit</code> scope in your project's <code>.npmrc</code> file to access the Bit repository:</p>
+<p>.npmrc</p>
+<pre><code>@bit:registry=https://node.bit.dev
+</code></pre>
+<p> </p>
+<h5 id="importing-the-change-case-pipe">Importing the Change Case Pipe</h5>
+<p>To use the <code>ChangeCasePipe</code>, import the <code>ChangeCasePipeModule</code> into your app's <code>CashmereModule</code> (which in turn is imported into your app):</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
+
+@NgModule({
+    exports: [ChangeCasePipeModule]
+})
+export class CashmereModule {}
+</code></pre>
+<p> </p>
+<h5 id="usage">Usage</h5>
+<pre><code class="language-html">{{ 'Sample text' | changeCase : 'pascalCase' }}
+&lt;!-- will output 'SampleText' --&gt;
+{{ 'Sample text' | changeCase : 'paramCase' }}
+&lt;!-- will output 'sample-text' --&gt;
+</code></pre>
+<p>The available case transformation functions will depend on the version of <code>change-case</code> you have installed in your project.
+Check the documentation for more details: <a href="https://www.npmjs.com/package/change-case">https://www.npmjs.com/package/change-case</a></p>
